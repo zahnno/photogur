@@ -9,6 +9,7 @@ class PicturesController < ApplicationController
 	end
 
 	def new
+		@picture = Picture.new
 	end
 
 	def create
@@ -20,23 +21,19 @@ class PicturesController < ApplicationController
       # otherwise render the view associated with the action :new (i.e. new.html.erb)
       	 render :new
     	 end
-    
-    private
-    def picture_params
-      params.require(:picture).permit(:artist, :title, :url)
     end
-
-     def edit
-     @picture = Picture.find(params[:id])
-  	 end
+    
+    def edit
+      @picture = Picture.find(params[:id])
+  	end
 
     def update
-    @picture = Picture.find(params[:id])
+      @picture = Picture.find(params[:id])
 
       if @picture.update_attributes(picture_params)
-      redirect_to "/pictures/#{@picture.id}"
+        redirect_to "/pictures/#{@picture.id}"
       else
-      render :edit
+        render :edit
       end
     end
 
@@ -44,6 +41,12 @@ class PicturesController < ApplicationController
     	@picture = Picture.find(params[:id])
     	@picture.destroy
     	redirect_to pictures_url
+    end
+
+    private
+    
+    def picture_params
+      params.require(:picture).permit(:artist, :title, :url)
     end
 
 end
