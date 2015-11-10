@@ -1,18 +1,19 @@
 Rails.application.routes.draw do
 
-    delete 'pictures/:id' => 'pictures#destroy', as: "delete_picture"
-    root 'pictures#index'
+resources :pictures
+    # delete 'pictures/:id' => 'pictures#destroy', as: "delete_picture"
+    # root 'pictures#index'
     
-    root 'pictures#index'
-    get 'pictures' => 'pictures#index'
+    # root 'pictures#index'
+    # get 'pictures' => 'pictures#index'
 
-    post 'pictures' => 'pictures#create'
-    get 'pictures/new' => 'pictures#new'
+    # post 'pictures' => 'pictures#create'
+    # get 'pictures/new' => 'pictures#new'
 
-    get 'pictures/:id' => 'pictures#show' , as: 'picture'
+    # get 'pictures/:id' => 'pictures#show' , as: 'picture'
 
-    get 'pictures/:id/edit' => "picture#edit", as "edit_picture"
-    patch 'picture/:id' => "pictures#update"
+    # get 'pictures/:id/edit' => "picture#edit", as "edit_picture"
+    # patch 'picture/:id' => "pictures#update"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
